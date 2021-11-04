@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -71,10 +70,17 @@ public class EnemyInvisible : MonoBehaviour
 
         if (Vector2.Distance(transform.position, _waypoints.waypoints[_waypointIndex].position) < 0.1f)
         {
+            if (_waypoints.waypoints.Length == 3)
+            {
+                Destroy(gameObject);
+            }
             gameObject.GetComponent<Renderer>().enabled = true;
             _waypointIndex++;
             TakeHit(1);
+            
         }
+
+        
     }
 
     public void TakeHit(float damage)

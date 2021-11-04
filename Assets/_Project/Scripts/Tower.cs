@@ -1,7 +1,4 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
-using UnityEditor.UIElements;
 using UnityEngine;
 
 public class Tower : MonoBehaviour
@@ -11,24 +8,12 @@ public class Tower : MonoBehaviour
     [SerializeField] private float speed;
     [SerializeField] private float interval;
     private bool _canshoot;
-    private float _maxRange;
-    private float _shootTimerMax;
-    private float _shootTimer;
+    [SerializeField] private float maxRange;
 
-    private void Awake()
-    {
-        _maxRange = 40f;
-        _shootTimerMax = 1f;
-    }
 
     private void Start()
     {
         StartCoroutine(shooting());
-    }
-
-    private void Update()
-    {
-        fire();
     }
 
     private void Upgrade()
@@ -37,23 +22,21 @@ public class Tower : MonoBehaviour
 
     private Enemy GetClosestEnemy()
     {
-        return Enemy.GetClosestEnemy(transform.position, _maxRange);
+        return Enemy.GetClosestEnemy(transform.position, maxRange);
     }
 
     private IEnumerator shooting()
     {
         while (true)
         {
-            _canshoot = true;
-            yield return null;
-            _canshoot = false;
+            fire();
             yield return new WaitForSeconds(interval);
         }
     }
 
     public void fire()
     {
-        if (_canshoot && GetClosestEnemy() != null)
+        if (GetClosestEnemy() != null)
         {
             Transform projectileTransform = Instantiate(prefabProjectile, spawnPoint.position, Quaternion.identity);
             Projectile projectile = projectileTransform.GetComponent<Projectile>();

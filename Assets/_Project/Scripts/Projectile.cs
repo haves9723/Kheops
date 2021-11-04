@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
@@ -18,7 +15,6 @@ public class Projectile : MonoBehaviour
     {
         if (_enemy != null)
         {
-            Debug.Log(_enemy);
             Vector3 targetPosition = _enemy.transform.position;
             Vector3 moveDir = (targetPosition - transform.position).normalized;
 

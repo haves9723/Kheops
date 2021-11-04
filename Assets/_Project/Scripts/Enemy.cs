@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -70,6 +69,10 @@ public class Enemy : MonoBehaviour
 
         if (Vector2.Distance(transform.position, _waypoints.waypoints[_waypointIndex].position) < 0.1f)
         {
+            if (_waypoints.waypoints.Length == 3)
+            {
+                Destroy(gameObject);
+            }
             _waypointIndex++;
             TakeHit(1);
         }
@@ -81,7 +84,6 @@ public class Enemy : MonoBehaviour
         healthBar.SetHealth(hitPoints, maxHitPoints);
         if (hitPoints <= 0)
         {
-            
             enemies.Remove(this);
             Destroy(gameObject);
         }
