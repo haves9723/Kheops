@@ -8,7 +8,7 @@ public class EnemySpawner : MonoBehaviour
     public static EnemySpawner instance;
 
     //Enemy prefabs
-    public GameObject prefab;
+    public List<GameObject> prefabs;
 
     //Enemy spawn
     public Transform spawnPoint;
@@ -21,6 +21,7 @@ public class EnemySpawner : MonoBehaviour
     {
         StartSpawning();    
     }
+
     public void StartSpawning()
     {
         StartCoroutine(SpawnDelay());
@@ -39,10 +40,10 @@ public class EnemySpawner : MonoBehaviour
     public void SpawnEnemy()
     {
         //Randomize the enemy spawned
-        //int randomPrefabID = Random.Range(0, prefabs.Count);
+        int randomPrefabID = Random.Range(0, prefabs.Count);
         //Randomize the spawn point
 
         //Instantiate the enemy prefab
-        GameObject spawnedEnemy = Instantiate(prefab, spawnPoint);
+        GameObject spawnedEnemy = Instantiate(prefabs[randomPrefabID], spawnPoint);
     }
 }

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour
+public class EnemyInvisible : MonoBehaviour
 {
     //speed enemy
     public float speed;
@@ -12,7 +12,7 @@ public class Enemy : MonoBehaviour
     public HealthbarBehaviour healthBar;
 
 
-    public static List<Enemy> enemies = new List<Enemy>();
+    public static List<EnemyInvisible> enemies = new List<EnemyInvisible>();
 
     //all Waypoints
     private Waypoints _waypoints;
@@ -20,10 +20,10 @@ public class Enemy : MonoBehaviour
     private int _waypointIndex;
 
 
-    public static Enemy GetClosestEnemy(Vector3 position, float maxRange)
+    public static EnemyInvisible GetClosestEnemy(Vector3 position, float maxRange)
     {
-        Enemy closest = null;
-        foreach (Enemy enemy in enemies)
+        EnemyInvisible closest = null;
+        foreach (EnemyInvisible enemy in enemies)
         {
             // if (enemy.IsDead()) continue;
             if (Vector3.Distance(position, enemy.transform.position) <= maxRange)
@@ -57,6 +57,7 @@ public class Enemy : MonoBehaviour
     void Start()
     {
         _waypoints = GameObject.FindGameObjectWithTag("Waypoints").GetComponent<Waypoints>();
+        gameObject.GetComponent<Renderer>().enabled = false;
         healthBar.SetHealth(hitPoints, maxHitPoints);
     }
 
@@ -70,6 +71,7 @@ public class Enemy : MonoBehaviour
 
         if (Vector2.Distance(transform.position, _waypoints.waypoints[_waypointIndex].position) < 0.1f)
         {
+            gameObject.GetComponent<Renderer>().enabled = true;
             _waypointIndex++;
             TakeHit(1);
         }
@@ -81,7 +83,7 @@ public class Enemy : MonoBehaviour
         healthBar.SetHealth(hitPoints, maxHitPoints);
         if (hitPoints <= 0)
         {
-            
+
             enemies.Remove(this);
             Destroy(gameObject);
         }
