@@ -13,7 +13,7 @@ public class Tower : MonoBehaviour
 
     private void Awake()
     {
-        _projectileShootFromPosition = transform.Find("ProjectileShootFromPosition").position;
+        _projectileShootFromPosition = transform.Find("ProjectileStartPosition").position;
         _maxRange = 40f;
         _shootTimerMax = 1f;
     }
