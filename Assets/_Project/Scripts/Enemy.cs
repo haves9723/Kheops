@@ -1,29 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-<<<<<<< Updated upstream
 
 public class Enemy : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-=======
-using TMPro;
-
-public class Enemy : MonoBehaviour
-{
-    //text money
-    
-    private static readonly int _MONEY_VALUE = 33;
-
     //speed enemy
     public float speed;
 
     public float hitPoints;
     public float maxHitPoints = 30;
-    //public HealthbarBehaviour healthbar;
 
 
     public static List<Enemy> enemies = new List<Enemy>();
@@ -70,17 +55,12 @@ public class Enemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //healthbar.SetHealth(hitPoints, maxHitPoints);
         _waypoints = GameObject.FindGameObjectWithTag("Waypoints").GetComponent<Waypoints>();
->>>>>>> Stashed changes
     }
 
     // Update is called once per frame
     void Update()
     {
-<<<<<<< Updated upstream
-        
-=======
         transform.position =
             Vector2.MoveTowards(transform.position,
                 _waypoints.waypoints[_waypointIndex].position,
@@ -96,13 +76,12 @@ public class Enemy : MonoBehaviour
     public void TakeHit(float damage)
     {
         hitPoints -= damage;
-        //healthbar.SetHealth(hitPoints, maxHitPoints);
 
         if (hitPoints <= 0)
         {
+            
             enemies.Remove(this);
             Destroy(gameObject);
         }
->>>>>>> Stashed changes
     }
 }
