@@ -16,6 +16,11 @@ public class EnemySpawner : MonoBehaviour
     //Enemy spawn interval
     public float spawnInterval = 5f;
 
+
+    void Start()
+    {
+        StartSpawning();    
+    }
     public void StartSpawning()
     {
         StartCoroutine(SpawnDelay());
