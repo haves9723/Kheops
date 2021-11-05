@@ -1,24 +1,11 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
     private Enemy _enemy;
     private int _hitAmount;
 
-
-    public static void Create(Vector3 spawnPosition, Enemy enemy, int hitAmount)
-    {
-        Transform projectileTransform =
-            Instantiate(GameManager.instance.prefabProjectile, spawnPosition, Quaternion.identity);
-
-        Projectile projectile = projectileTransform.GetComponent<Projectile>();
-        projectile.Setup(enemy, hitAmount);
-    }
-
-    private void Setup(Enemy enemy, int hitAmount)
+    public void Setup(Enemy enemy, int hitAmount)
     {
         _enemy = enemy;
         _hitAmount = hitAmount;
@@ -31,7 +18,7 @@ public class Projectile : MonoBehaviour
             Vector3 targetPosition = _enemy.transform.position;
             Vector3 moveDir = (targetPosition - transform.position).normalized;
 
-            float moveSpeed = 20f;
+            float moveSpeed = 10f;
 
             transform.position += moveDir * moveSpeed * Time.deltaTime;
 
@@ -45,7 +32,7 @@ public class Projectile : MonoBehaviour
         }
         else
         {
-            Destroy(gameObject); 
+            Destroy(gameObject);
         }
     }
 }

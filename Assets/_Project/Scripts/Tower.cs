@@ -1,43 +1,46 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Tower : MonoBehaviour
 {
-    private Vector3 _projectileShootFromPosition;
-    private float _maxRange;
-    private float _shootTimerMax;
-    private float _shootTimer;
+    [SerializeField] Transform prefabProjectile;
+    [SerializeField] private Transform spawnPoint;
+    [SerializeField] private float speed;
+    [SerializeField] private float interval;
+    private bool _canshoot;
+    [SerializeField] private float maxRange;
 
 
-    private void Awake()
+    private void Start()
     {
-        _projectileShootFromPosition = transform.Find("ProjectileShootFromPosition").position;
-        _maxRange = 40f;
-        _shootTimerMax = 1f;
+        StartCoroutine(shooting());
     }
 
-    private void Update()
+    private void Upgrade()
     {
-        _shootTimer -= Time.deltaTime;
-
-        if (_shootTimer <= 0f)
-        {
-            _shootTimer = _shootTimerMax;
-
-
-            Enemy enemy = GetClosestEnemy();
-            if (enemy != null)
-            {
-                Projectile.Create(_projectileShootFromPosition, enemy, 1);
-            }
-        }
     }
 
     private Enemy GetClosestEnemy()
     {
-        return Enemy.GetClosestEnemy(transform.position, _maxRange);
+        return Enemy.GetClosestEnemy(transform.position, maxRange);
     }
-    
+
+    private IEnumerator shooting()
+    {
+        while (true)
+        {
+            fire();
+            yield return new WaitForSeconds(interval);
+        }
+    }
+
+    public void fire()
+    {
+        if (GetClosestEnemy() != null)
+        {
+            Transform projectileTransform = Instantiate(prefabProjectile, spawnPoint.position, Quaternion.identity);
+            Projectile projectile = projectileTransform.GetComponent<Projectile>();
+            projectile.Setup(Enemy.GetClosestEnemy(spawnPoint.position, 40f), 1);
+        }
+    }
 }

@@ -1,8 +1,8 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
-
-public class Enemy : MonoBehaviour
+public class EnemyInvisible : MonoBehaviour
 {
     //speed enemy
     public float speed;
@@ -12,7 +12,7 @@ public class Enemy : MonoBehaviour
     public HealthbarBehaviour healthBar;
 
 
-    public static List<Enemy> enemies = new List<Enemy>();
+    public static List<EnemyInvisible> enemies = new List<EnemyInvisible>();
 
     //all Waypoints
     private Waypoints _waypoints;
@@ -20,10 +20,21 @@ public class Enemy : MonoBehaviour
     private int _waypointIndex;
 
 
-    public static Enemy GetClosestEnemy(Vector3 position, float maxRange)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        Enemy closest = null;
-        foreach (Enemy enemy in enemies)
+        Destroy(gameObject);
+    }
+
+    private void OnMouseDown()
+    {
+        Destroy(gameObject);
+    }
+
+
+    public static EnemyInvisible GetClosestEnemy(Vector3 position, float maxRange)
+    {
+        EnemyInvisible closest = null;
+        foreach (EnemyInvisible enemy in enemies)
         {
             // if (enemy.IsDead()) continue;
             if (Vector3.Distance(position, enemy.transform.position) <= maxRange)
@@ -42,13 +53,7 @@ public class Enemy : MonoBehaviour
                 }
             }
         }
-
         return closest;
-    }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        Destroy(gameObject);
     }
 
 
@@ -62,26 +67,32 @@ public class Enemy : MonoBehaviour
     void Start()
     {
         _waypoints = GameObject.FindGameObjectWithTag("Waypoints").GetComponent<Waypoints>();
+        //gameObject.GetComponent<Renderer>().enabled = false;
         healthBar.SetHealth(hitPoints, maxHitPoints);
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.position =
+        SpriteRenderer sprite = gameObject.GetComponent<SpriteRenderer>();
+        
+
+        transform.position = 
             Vector2.MoveTowards(transform.position,
                 _waypoints.waypoints[_waypointIndex].position,
                 speed * Time.deltaTime);
 
         if (Vector2.Distance(transform.position, _waypoints.waypoints[_waypointIndex].position) < 0.1f)
         {
-            if (_waypoints.waypoints.Length == 3)
-            {
-                Destroy(gameObject);
-            }
+            sprite.color = new Color(1f, 1f, 1f, .5f);
+            //gameObject.GetComponent<Renderer>().enabled = true;
             _waypointIndex++;
+            speed = 3;
             TakeHit(1);
+            
         }
+
+        
     }
 
     public void TakeHit(float damage)
@@ -90,9 +101,9 @@ public class Enemy : MonoBehaviour
         healthBar.SetHealth(hitPoints, maxHitPoints);
         if (hitPoints <= 0)
         {
+
             enemies.Remove(this);
             Destroy(gameObject);
         }
     }
-
 }

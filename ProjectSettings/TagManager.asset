@@ -3,14 +3,19 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Waypoints
+  - Enemy
+  - EnemyInvisible
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - All
   - Water
   - UI
+  - Enemy
+  - 
   - Ground
   - SpawnPointTowers
   - 
@@ -40,6 +45,15 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Ground
+    uniqueID: 94608889
+    locked: 0
+  - name: Enemies
+    uniqueID: 958605673
+    locked: 0
+  - name: Base
+    uniqueID: 753114857
     locked: 0
   - name: Ground
     uniqueID: 14394083
