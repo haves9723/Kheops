@@ -50,12 +50,6 @@ TagManager:
   - name: Enemies
     uniqueID: 958605673
     locked: 0
-  - name: Enemies
-    uniqueID: 3650387243
-    locked: 0
-  - name: tower
-    uniqueID: 3467133137
-    locked: 0
-  - name: projectile
-    uniqueID: 3758935217
+  - name: Base
+    uniqueID: 753114857
     locked: 0
