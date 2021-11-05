@@ -5,11 +5,11 @@ using UnityEngine.EventSystems;
 public class EnemyInvisible : MonoBehaviour
 {
     //speed enemy
-    public float speed;
+    [SerializeField] public float speed;
 
-    public float hitPoints;
-    public float maxHitPoints = 30;
-    public HealthbarBehaviour healthBar;
+    [SerializeField] float hitPoints;
+    [SerializeField] public float maxHitPoints = 30;
+    [SerializeField] public HealthbarBehaviour healthBar;
 
 
     public static List<EnemyInvisible> enemies = new List<EnemyInvisible>();
@@ -20,10 +20,10 @@ public class EnemyInvisible : MonoBehaviour
     private int _waypointIndex;
 
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    /*private void OnCollisionEnter2D(Collision2D collision)
     {
         Destroy(gameObject);
-    }
+    }*/
 
     private void OnMouseDown()
     {
@@ -91,8 +91,6 @@ public class EnemyInvisible : MonoBehaviour
             TakeHit(1);
             
         }
-
-        
     }
 
     public void TakeHit(float damage)

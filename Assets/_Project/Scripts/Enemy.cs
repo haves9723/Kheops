@@ -5,11 +5,11 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     //speed enemy
-    public float speed;
+    [SerializeField] public float speed;
 
-    public float hitPoints;
-    public float maxHitPoints = 30;
-    public HealthbarBehaviour healthBar;
+    [SerializeField] public float hitPoints;
+    [SerializeField] public float maxHitPoints = 30;
+    [SerializeField] public HealthbarBehaviour healthBar;
 
 
     public static List<Enemy> enemies = new List<Enemy>();
@@ -18,6 +18,12 @@ public class Enemy : MonoBehaviour
     private Waypoints _waypoints;
 
     private int _waypointIndex;
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        enemies.Remove(this);
+        Destroy(gameObject);
+    }
 
 
     public static Enemy GetClosestEnemy(Vector3 position, float maxRange)
@@ -46,11 +52,6 @@ public class Enemy : MonoBehaviour
         return closest;
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        Destroy(gameObject);
-    }
-
 
     void Awake()
     {
@@ -75,12 +76,10 @@ public class Enemy : MonoBehaviour
 
         if (Vector2.Distance(transform.position, _waypoints.waypoints[_waypointIndex].position) < 0.1f)
         {
-            if (_waypoints.waypoints.Length == 3)
+            if (this != null)
             {
-                Destroy(gameObject);
+                _waypointIndex++;
             }
-            _waypointIndex++;
-            TakeHit(1);
         }
     }
 

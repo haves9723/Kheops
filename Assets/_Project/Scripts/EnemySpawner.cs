@@ -8,10 +8,10 @@ public class EnemySpawner : MonoBehaviour
     public static EnemySpawner instance;
 
     //Enemy prefabs
-    public List<GameObject> prefabs;
+    [SerializeField] public List<GameObject> prefabs;
 
     //Enemy spawn
-    public Transform spawnPoint;
+    [SerializeField] public Transform spawnPoint;
 
     //Enemy spawn interval
     public float spawnInterval = 5f;

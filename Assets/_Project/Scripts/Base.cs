@@ -2,17 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Base : MonoBehaviour
+public class Base : Health
 {
+    public GameOverScreen GameOverScreen;
 
-    public float hitPoints;
-    public float maxHitPoints = 100;
-    public HealthbarBehaviour healthBar;
 
-    // Start is called before the first frame update
-    void Start()
+    public override void Die()
     {
-        healthBar.SetHealth(hitPoints, maxHitPoints);
+        GameOverScreen.Setup();
     }
 
     // Update is called once per frame
@@ -21,13 +18,4 @@ public class Base : MonoBehaviour
         
     }
 
-    public void TakeHit(float damage)
-    {
-        hitPoints -= damage;
-        healthBar.SetHealth(hitPoints, maxHitPoints);
-        if (hitPoints <= 0)
-        {
-            Destroy(gameObject);
-        }
-    }
 }

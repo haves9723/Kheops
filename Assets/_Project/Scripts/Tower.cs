@@ -40,7 +40,7 @@ public class Tower : MonoBehaviour
         {
             Transform projectileTransform = Instantiate(prefabProjectile, spawnPoint.position, Quaternion.identity);
             Projectile projectile = projectileTransform.GetComponent<Projectile>();
-            projectile.Setup(Enemy.GetClosestEnemy(spawnPoint.position, 40f), 1);
+            projectile.Setup(GetClosestEnemy(), 1);
         }
     }
 }
