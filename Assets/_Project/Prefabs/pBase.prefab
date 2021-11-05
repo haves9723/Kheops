@@ -146,8 +146,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 650099b1b922c734492116060735a2ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitPoints: 20
-  maxHitPoints: 20
+  initHealth: 0
+  currentHealth: 0
   healthBar: {fileID: 2734718415591737640}
   GameOverScreen: {fileID: 0}
 --- !u!114 &2734718414133690922
@@ -162,8 +162,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51368b482cc44c644b0dd75e07d3eae4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initHealth: 3
+  initHealth: 20
   currentHealth: 0
+  healthBar: {fileID: 0}
 --- !u!1 &2734718414904617516
 GameObject:
   m_ObjectHideFlags: 0

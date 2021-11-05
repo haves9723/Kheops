@@ -1,24 +1,45 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
-    public GameOverScreen GameOverScreen;
     [SerializeField] private string startScene;
-    private GameManager instance;
+    public TextMeshProUGUI coinText;
+    [SerializeField] private int coins;
+
+    public GameOverScreen GameOverScreen;
+    //Singleton
+    public static GameManager instance;
+    
 
     void Awake()
     {
 
         if (instance == null)
         {
-
             instance = this;
         }
         else
         {
             Destroy(this);
         }
+    }
+
+    public void update()
+    {
+
+    }
+
+    public void setCoins(int value)
+    {
+        coins += value;
+        coinText.text = coins.ToString() + " €";
+    }
+
+    public int getCoins()
+    {
+        return coins;
     }
 
 
