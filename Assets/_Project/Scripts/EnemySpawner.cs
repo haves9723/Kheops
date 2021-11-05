@@ -14,10 +14,10 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] public Transform spawnPoint;
 
     //Enemy spawn interval
-    public float spawnInterval = 5f;
+    //public float spawnInterval = 5f;
 
 
-    void Start()
+    /*void Start()
     {
         StartSpawning();    
     }
@@ -35,7 +35,7 @@ public class EnemySpawner : MonoBehaviour
         yield return new WaitForSeconds(spawnInterval);
 
         StartCoroutine(SpawnDelay());
-    }
+    }*/
 
     public void SpawnEnemy()
     {

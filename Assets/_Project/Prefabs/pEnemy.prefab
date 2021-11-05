@@ -495,6 +495,7 @@ MonoBehaviour:
   hitPoints: 5
   maxHitPoints: 5
   healthBar: {fileID: 5658427981150881083}
+  coinValue: 50
 --- !u!114 &5162050367912492859
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -507,7 +508,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96d48152ef9540640b9d951e62404421, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 2
+  damage: 1
 --- !u!61 &5100447699454391781
 BoxCollider2D:
   m_ObjectHideFlags: 0
