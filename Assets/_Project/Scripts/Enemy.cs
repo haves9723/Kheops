@@ -10,6 +10,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] private float hitPoints;
     [SerializeField] private float maxHitPoints = 30;
     [SerializeField] private HealthbarBehaviour healthBar;
+    [SerializeField] private int coinValue;
 
 
     public static List<Enemy> enemies = new List<Enemy>();
@@ -88,7 +89,9 @@ public class Enemy : MonoBehaviour
         {
             enemies.Remove(this);
             Destroy(gameObject);
+            GameManager.instance.setCoins(coinValue);
         }
     }
 
+    
 }

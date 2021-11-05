@@ -17,4 +17,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_Project/Scenes/Filipe/FilipeScene.unity
     guid: 1309c96f50aa4584682f10ee1c137d90
+    path: Assets/_Project/Scenes/Production/MainScene.unity
+    guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 0
+    path: Assets/_Project/Scenes/Chris/ChrisScene.unity
+    guid: 754beab43a657494bbbaa41d1ec34eae
   m_configObjects: {}
