@@ -403,9 +403,9 @@ GameObject:
   - component: {fileID: 8835244701326025571}
   - component: {fileID: 1565926466147652889}
   - component: {fileID: -515286471140615388}
+  - component: {fileID: 5162050367912492859}
   - component: {fileID: 5100447699454391781}
   - component: {fileID: 4767616925077867934}
-  - component: {fileID: -1935335294566870844}
   m_Layer: 0
   m_Name: pEnemy
   m_TagString: Untagged
@@ -468,12 +468,12 @@ SpriteRenderer:
   m_SortingLayerID: 958605673
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 8326d498e5af3e0488a0b5669e07a07e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4fefb9a8cc63598459539b3d4a4d1e3f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 2.94, y: 2.75}
+  m_Size: {x: 1.47, y: 1.375}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -491,10 +491,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27045996177d40e2bfc9380ddf265b71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
+  speed: 4
   hitPoints: 5
   maxHitPoints: 5
   healthBar: {fileID: 5658427981150881083}
+--- !u!114 &5162050367912492859
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9045979238966247943}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96d48152ef9540640b9d951e62404421, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 2
 --- !u!61 &5100447699454391781
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -513,7 +526,7 @@ BoxCollider2D:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 1.96, y: 1.8333334}
-    newSize: {x: 2.94, y: 2.75}
+    newSize: {x: 1.47, y: 1.375}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -542,22 +555,3 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!95 &-1935335294566870844
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9045979238966247943}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
