@@ -9,6 +9,12 @@ EditorBuildSettings:
     path: Assets/_Project/Scenes/Filipe/MenuScene.unity
     guid: 8790baae377e54c46b24e678fb8d6034
   - enabled: 1
+    path: Assets/_Project/Scenes/Filipe/HistoireScene.unity
+    guid: 43473c44605ff1142a46d206062dc0a2
+  - enabled: 1
+    path: Assets/_Project/Scenes/Filipe/HistoireScene2.unity
+    guid: e0511a211758fe541bb813079032f261
+  - enabled: 1
     path: Assets/_Project/Scenes/Filipe/FilipeScene.unity
     guid: 1309c96f50aa4584682f10ee1c137d90
   m_configObjects: {}

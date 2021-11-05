@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public partial class Music : MonoBehaviour
 {
@@ -9,7 +10,7 @@ public partial class Music : MonoBehaviour
 
     private void Awake()
     {
-        if (musique != null && musique != this)
+        if (musique != null && musique != this )
         {
             Destroy(this.gameObject);
             return;

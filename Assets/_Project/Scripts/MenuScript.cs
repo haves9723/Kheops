@@ -7,7 +7,7 @@ public class MenuScript : MonoBehaviour
 {
     public void PlayGame()
     {
-        SceneManager.LoadScene("FilipeScene");
+        SceneManager.LoadScene("HistoireScene");
     }
 
     public void QuitGame()
