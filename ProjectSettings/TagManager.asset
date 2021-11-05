@@ -16,6 +16,8 @@ TagManager:
   - UI
   - Enemy
   - 
+  - Ground
+  - SpawnPointTowers
   - 
   - 
   - 
@@ -53,6 +55,12 @@ TagManager:
   - name: Base
     uniqueID: 753114857
     locked: 0
-  - name: New Layer
-    uniqueID: 2694374633
+  - name: Ground
+    uniqueID: 14394083
+    locked: 0
+  - name: SpawnPointTowers
+    uniqueID: 205077599
+    locked: 0
+  - name: UITower
+    uniqueID: 3041202567
     locked: 0

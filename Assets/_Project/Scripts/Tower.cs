@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class Tower : MonoBehaviour
 {
@@ -7,17 +8,26 @@ public class Tower : MonoBehaviour
     [SerializeField] private Transform spawnPoint;
     [SerializeField] private float speed;
     [SerializeField] private float interval;
-    private bool _canshoot;
     [SerializeField] private float maxRange;
-
+    [SerializeField] public Sprite[] sprites;
+    public int upgradeLevel;
+    
 
     private void Start()
     {
-        StartCoroutine(shooting());
+        upgradeLevel = 0;
+        StartCoroutine(Shooting());
     }
 
-    private void Upgrade()
+    public void Upgrade(Sprite newSprite, float interval, float maxRange)
     {
+        if (upgradeLevel < sprites.Length)
+        {
+            upgradeLevel++;
+        }
+        gameObject.GetComponent<SpriteRenderer>().sprite = newSprite;
+        this.interval = interval;
+        this.maxRange = maxRange;
     }
 
     private Enemy GetClosestEnemy()
@@ -25,7 +35,7 @@ public class Tower : MonoBehaviour
         return Enemy.GetClosestEnemy(transform.position, maxRange);
     }
 
-    private IEnumerator shooting()
+    private IEnumerator Shooting()
     {
         while (true)
         {
@@ -34,7 +44,7 @@ public class Tower : MonoBehaviour
         }
     }
 
-    public void fire()
+    private void fire()
     {
         if (GetClosestEnemy() != null)
         {
