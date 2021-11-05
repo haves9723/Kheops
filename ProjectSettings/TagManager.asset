@@ -15,9 +15,7 @@ TagManager:
   - Water
   - UI
   - Enemy
-  - 
-  - Ground
-  - SpawnPointTowers
+  - UITower
   - 
   - 
   - 
@@ -55,12 +53,6 @@ TagManager:
   - name: Base
     uniqueID: 753114857
     locked: 0
-  - name: Ground
-    uniqueID: 14394083
-    locked: 0
-  - name: SpawnPointTowers
-    uniqueID: 205077599
-    locked: 0
   - name: UITower
-    uniqueID: 3041202567
+    uniqueID: 2995389919
     locked: 0

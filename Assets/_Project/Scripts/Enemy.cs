@@ -61,13 +61,14 @@ public class Enemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _waypoints = GameObject.FindGameObjectWithTag("Waypoints").GetComponent<Waypoints>();
+        _waypoints = FindObjectOfType<Waypoints>();
         healthBar.SetHealth(hitPoints, maxHitPoints);
     }
 
     // Update is called once per frame
     void Update()
     {
+        
         transform.position =
             Vector2.MoveTowards(transform.position,
                 _waypoints.waypoints[_waypointIndex].position,
@@ -75,12 +76,7 @@ public class Enemy : MonoBehaviour
 
         if (Vector2.Distance(transform.position, _waypoints.waypoints[_waypointIndex].position) < 0.1f)
         {
-            if (_waypoints.waypoints.Length == 3)
-            {
-                Destroy(gameObject);
-            }
             _waypointIndex++;
-            TakeHit(1);
         }
     }
 

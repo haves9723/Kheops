@@ -75,7 +75,6 @@ public class EnemyInvisible : MonoBehaviour
     void Update()
     {
         SpriteRenderer sprite = gameObject.GetComponent<SpriteRenderer>();
-        
 
         transform.position = 
             Vector2.MoveTowards(transform.position,
