@@ -1,10 +1,10 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class HistoireScript2 : MonoBehaviour
+public class HistoireScript3 : MonoBehaviour
 {
     public void Suivant()
     {
-        SceneManager.LoadScene("HistoireScene3");
+        SceneManager.LoadScene("MainScene");
     }
 }

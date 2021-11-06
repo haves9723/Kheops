@@ -71,8 +71,8 @@ public class Spawner : MonoBehaviour
                 }
                 else
                 {
+                    // DeselectTowers();
                     towersUI[spawnID].color = Color.red;
-                    DeselectTowers();
                 }
             }
         }

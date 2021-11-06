@@ -15,6 +15,9 @@ EditorBuildSettings:
     path: Assets/_Project/Scenes/Production/HistoireScene2.unity
     guid: e0511a211758fe541bb813079032f261
   - enabled: 1
+    path: Assets/_Project/Scenes/Production/HistoireScene3.unity
+    guid: 9428bbef673578e4b93c08cc9f27a99a
+  - enabled: 1
     path: Assets/_Project/Scenes/Production/MainScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   m_configObjects: {}

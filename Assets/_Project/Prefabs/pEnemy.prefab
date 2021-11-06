@@ -495,7 +495,7 @@ MonoBehaviour:
   hitPoints: 3
   maxHitPoints: 3
   healthBar: {fileID: 5658427981150881083}
-  enemyValue: 15
+  enemyValue: 25
 --- !u!114 &5162050367912492859
 MonoBehaviour:
   m_ObjectHideFlags: 0
