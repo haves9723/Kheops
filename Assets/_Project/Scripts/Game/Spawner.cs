@@ -21,6 +21,7 @@ public class Spawner : MonoBehaviour
     //SpawnPoints Tilemap
     public Tilemap spawnTilemap;
 
+
     void Update()
     {
         if (CanSpawn())
@@ -54,29 +55,46 @@ public class Spawner : MonoBehaviour
             //check if we can spawn in that cell (collider)
             if (spawnTilemap.GetColliderType(cellPosDefault) == Tile.ColliderType.Sprite)
             {
-                //Spawn the tower
-                SpawnTower(cellPosCentered);
-                //Disable the collider
-                spawnTilemap.SetColliderType(cellPosDefault, Tile.ColliderType.None);
+                GameObject towerObject = Instantiate(towersPrefabs[spawnID], spawnTowerRoot);
+                Tower tower = towerObject.GetComponent<Tower>();
+                if (GameManager.instance.getCoins() >= tower.getTowerCost())
+                {
+                    //Spawn the tower
+                    SpawnTower(cellPosCentered, towerObject, tower);
+                    //Disable the collider
+                    spawnTilemap.SetColliderType(cellPosDefault, Tile.ColliderType.None);
+                }
+                else
+                {
+                    towersUI[spawnID].color = Color.red;
+                    DeselectTowers();
+                }
             }
         }
     }
 
-    void SpawnTower(Vector3 position)
+    void SpawnTower(Vector3 position, GameObject towerObject, Tower tower)
     {
-        GameObject tower = Instantiate(towersPrefabs[spawnID], spawnTowerRoot);
-        tower.transform.position = position;
+        towerObject.transform.position = position;
+        GameManager.instance.setCoins(GameManager.instance.getCoins() - tower.getTowerCost());
         DeselectTowers();
     }
 
 
     public void SelectTower(int id)
     {
-        DeselectTowers();
-        //set the SpawnID 
-        spawnID = id;
-        //Highlight the tower
-        towersUI[spawnID].color = Color.white;
+        if (id == spawnID)
+        {
+            DeselectTowers();
+        }
+        else
+        {
+            DeselectTowers();
+            //set the SpawnID 
+            spawnID = id;
+            //Highlight the tower
+            towersUI[spawnID].color = Color.white;
+        }
     }
 
     public void DeselectTowers()

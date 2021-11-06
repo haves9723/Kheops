@@ -99,13 +99,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefabProjectile: {fileID: 5180009010383856618, guid: 76dbde35c4b423341ad9f1da8ef69bcc, type: 3}
   spawnPoint: {fileID: 2780428865948858469}
-  speed: 30
-  interval: 1
-  maxRange: 10
+  interval: 2
+  maxRange: 8
   sprites:
   - {fileID: 21300000, guid: 28f445fd7ba16ef4c8f2b1c512ea1fd9, type: 3}
   - {fileID: 21300000, guid: e74c3c54dd286204b929df00a62b6870, type: 3}
-  upgradeLevel: 0
+  towerCost: 50
+  towerLevel: 1
 --- !u!1 &2780428865582051774
 GameObject:
   m_ObjectHideFlags: 0

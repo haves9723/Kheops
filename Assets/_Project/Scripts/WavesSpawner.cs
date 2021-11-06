@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+
 public class WavesSpawner : MonoBehaviour
 {
-
     //UI text for round
     public TextMeshProUGUI waveCountText;
     int roundCount = 0;
@@ -20,7 +20,6 @@ public class WavesSpawner : MonoBehaviour
 
     void Awake()
     {
-
     }
 
     // Start is called before the first frame update
@@ -45,6 +44,7 @@ public class WavesSpawner : MonoBehaviour
     IEnumerator waveSpawner()
     {
         waveIsDone = false;
+        //yield return new WaitForSeconds(30);
 
         for (int i = 0; i < enemyCount; i++)
         {
@@ -52,7 +52,13 @@ public class WavesSpawner : MonoBehaviour
             yield return new WaitForSeconds(spawnRate);
         }
 
-        spawnRate -= 0.1f;
+        if (spawnRate > .5f)
+        {
+            
+            spawnRate -= .5f;
+        }
+
+
         enemyCount += 3;
 
         yield return new WaitForSeconds(timeBetweenWaves);

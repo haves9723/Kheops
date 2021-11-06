@@ -1,33 +1,34 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.Serialization;
 
 public class Tower : MonoBehaviour
 {
     [SerializeField] Transform prefabProjectile;
     [SerializeField] private Transform spawnPoint;
-    [SerializeField] private float speed;
     [SerializeField] private float interval;
     [SerializeField] private float maxRange;
     [SerializeField] public Sprite[] sprites;
-    public int upgradeLevel;
-    
+    [SerializeField] private int towerCost;
+    [SerializeField] public int towerLevel;
+
 
     private void Start()
     {
-        upgradeLevel = 0;
+        towerLevel = 1;
         StartCoroutine(Shooting());
     }
 
-    public void Upgrade(Sprite newSprite, float interval, float maxRange)
+    public void Upgrade()
     {
-        if (upgradeLevel < sprites.Length)
+        if (towerLevel <= sprites.Length)
         {
-            upgradeLevel++;
+            gameObject.GetComponent<SpriteRenderer>().sprite = sprites[towerLevel-1];
+            towerLevel++;
+            interval -= .5f;
+            maxRange *= 2;
         }
-        gameObject.GetComponent<SpriteRenderer>().sprite = newSprite;
-        this.interval = interval;
-        this.maxRange = maxRange;
     }
 
     private Enemy GetClosestEnemy()
@@ -52,5 +53,10 @@ public class Tower : MonoBehaviour
             Projectile projectile = projectileTransform.GetComponent<Projectile>();
             projectile.Setup(GetClosestEnemy(), 1);
         }
+    }
+
+    public int getTowerCost()
+    {
+        return towerCost;
     }
 }

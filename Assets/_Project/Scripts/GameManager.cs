@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour
 
         if (instance == null)
         {
+            coinText.text = coins.ToString() + " €";
             instance = this;
         }
         else
@@ -31,10 +32,10 @@ public class GameManager : MonoBehaviour
 
     }
 
-    public void setCoins(int value)
+    public void setCoins(int newValue)
     {
-        coins += value;
-        coinText.text = coins.ToString() + " €";
+        coins = newValue;
+        coinText.text = coins + " €";
     }
 
     public int getCoins()

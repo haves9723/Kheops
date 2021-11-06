@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,13 +11,15 @@ public class Enemy : MonoBehaviour
     [SerializeField] private float hitPoints;
     [SerializeField] private float maxHitPoints = 30;
     [SerializeField] private HealthbarBehaviour healthBar;
-    [SerializeField] private int coinValue;
+    [SerializeField] private int enemyValue;
 
+    private SpriteRenderer _sprite;
 
     public static List<Enemy> enemies = new List<Enemy>();
 
     //all Waypoints
     private Waypoints _waypoints;
+    
 
     private int _waypointIndex;
 
@@ -26,13 +29,21 @@ public class Enemy : MonoBehaviour
         Destroy(gameObject);
     }
 
+    public Waypoints GetWayponts()
+    {
+        return _waypoints;
+    }
+    public void SetWayponts(Waypoints waypoints)
+    {
+        _waypoints = waypoints;
+    }
+
 
     public static Enemy GetClosestEnemy(Vector3 position, float maxRange)
     {
         Enemy closest = null;
         foreach (Enemy enemy in enemies)
         {
-            // if (enemy.IsDead()) continue;
             if (Vector3.Distance(position, enemy.transform.position) <= maxRange)
             {
                 if (closest == null)
@@ -63,7 +74,6 @@ public class Enemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _waypoints = FindObjectOfType<Waypoints>();
         healthBar.SetHealth(hitPoints, maxHitPoints);
     }
 
@@ -79,6 +89,8 @@ public class Enemy : MonoBehaviour
         {
             _waypointIndex++;
         }
+
+        //StartCoroutine(ChangeVisibility());
     }
 
     public void TakeHit(float damage)
@@ -89,9 +101,23 @@ public class Enemy : MonoBehaviour
         {
             enemies.Remove(this);
             Destroy(gameObject);
-            GameManager.instance.setCoins(coinValue);
+            GameManager.instance.setCoins(GameManager.instance.getCoins()+enemyValue);
         }
     }
+    
+    /*private IEnumerator ChangeVisibility()
+    {
+        if (_sprite.color.a == 0f)
+        {
+            _sprite.color = new Color(1f, 1f, 1f, 5f);
+        }
+        else
+        {
+            _sprite.color = new Color(1f, 1f, 1f, 0f);
+        }
+
+        yield return new WaitForSeconds(Random.Range(0, 2f));
+    }*/
 
     
 }

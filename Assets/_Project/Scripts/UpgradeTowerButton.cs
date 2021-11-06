@@ -9,19 +9,12 @@ public class UpgradeTowerButton : MonoBehaviour
     private void OnMouseDown()
     {
         Tower tower = gameObject.transform.parent.GetComponent<Tower>();
-        if (tower.upgradeLevel != tower.sprites.Length)
+        int upgradeCost = tower.getTowerCost() * (tower.towerLevel + 1);
+
+        if (tower.towerLevel -1 <= tower.sprites.Length && GameManager.instance.getCoins() >= upgradeCost)
         {
-            tower.Upgrade(tower.sprites[tower.upgradeLevel], 0.3f, 40f);
+            GameManager.instance.setCoins(GameManager.instance.getCoins() - upgradeCost);
+            tower.Upgrade();
         }
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
     }
 }
