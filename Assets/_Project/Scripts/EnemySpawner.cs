@@ -7,10 +7,10 @@ public class EnemySpawner : MonoBehaviour
     public static EnemySpawner instance;
 
     //Enemy prefabs
-    [SerializeField] public List<GameObject> prefabs;
+    [SerializeField] public List<GameObject> prefabsEnemies;
 
     //Enemy spawn
-    [SerializeField] public Waypoints[] WaypointsLists;
+    [SerializeField] private Waypoints[] WaypointsLists;
 
     //Enemy spawn interval
     //public float spawnInterval = 5f;
@@ -42,11 +42,16 @@ public class EnemySpawner : MonoBehaviour
         int selectedWaypontNumber = Random.Range(0, WaypointsLists.Length);
 
         //Instantiate the enemy prefab
-        int randomPrefabID = Random.Range(0, prefabs.Count);
+        int randomPrefabID = Random.Range(0, prefabsEnemies.Count);
 
         GameObject spawnedEnemy =
-            Instantiate(prefabs[randomPrefabID], WaypointsLists[selectedWaypontNumber].waypoints[0]);
+            Instantiate(prefabsEnemies[randomPrefabID], WaypointsLists[selectedWaypontNumber].waypoints[0]);
 
         spawnedEnemy.GetComponent<Enemy>().SetWayponts(WaypointsLists[selectedWaypontNumber]);
+    }
+
+    public List<GameObject> getPrefabsEnemies()
+    {
+        return prefabsEnemies;
     }
 }

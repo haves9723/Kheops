@@ -19,9 +19,19 @@ public class Enemy : MonoBehaviour
 
     //all Waypoints
     private Waypoints _waypoints;
-    
+
 
     private int _waypointIndex;
+
+    public void setEnemyValue(int value)
+    {
+        enemyValue = value;
+    }
+
+    public int getEnemyValue()
+    {
+        return enemyValue;
+    }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -33,6 +43,7 @@ public class Enemy : MonoBehaviour
     {
         return _waypoints;
     }
+
     public void SetWayponts(Waypoints waypoints)
     {
         _waypoints = waypoints;
@@ -101,10 +112,10 @@ public class Enemy : MonoBehaviour
         {
             enemies.Remove(this);
             Destroy(gameObject);
-            GameManager.instance.setCoins(GameManager.instance.getCoins()+enemyValue);
+            GameManager.instance.setCoins(GameManager.instance.getCoins() + enemyValue);
         }
     }
-    
+
     /*private IEnumerator ChangeVisibility()
     {
         if (_sprite.color.a == 0f)
@@ -118,6 +129,4 @@ public class Enemy : MonoBehaviour
 
         yield return new WaitForSeconds(Random.Range(0, 2f));
     }*/
-
-    
 }

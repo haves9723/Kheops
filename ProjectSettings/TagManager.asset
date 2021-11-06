@@ -7,6 +7,9 @@ TagManager:
   - Waypoints
   - Enemy
   - EnemyInvisible
+  - SpawnPointTowers
+  - TowerStone
+  - TowerFire
   layers:
   - Default
   - TransparentFX

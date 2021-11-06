@@ -1,10 +1,11 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] private string startScene;
+    //[SerializeField] private string startScene;
     public TextMeshProUGUI coinText;
     [SerializeField] private int coins;
 
@@ -51,7 +52,8 @@ public class GameManager : MonoBehaviour
 
     public void startGame()
     {
-        SceneManager.LoadScene(startScene);
+        Enemy.enemies.RemoveAll(enemy => true );
+        SceneManager.LoadScene("MainScene");
     }
 
     public 

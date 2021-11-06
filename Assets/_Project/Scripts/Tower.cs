@@ -24,10 +24,10 @@ public class Tower : MonoBehaviour
     {
         if (towerLevel <= sprites.Length)
         {
-            gameObject.GetComponent<SpriteRenderer>().sprite = sprites[towerLevel-1];
+            gameObject.GetComponent<SpriteRenderer>().sprite = sprites[towerLevel - 1];
             towerLevel++;
             interval -= .5f;
-            maxRange *= 2;
+            maxRange *= 1.2f;
         }
     }
 
@@ -58,5 +58,10 @@ public class Tower : MonoBehaviour
     public int getTowerCost()
     {
         return towerCost;
+    }
+
+    public void  setTowerCost(int value)
+    {
+        towerCost = value;
     }
 }

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2780428864421338731}
   m_Layer: 0
   m_Name: TowerFire
-  m_TagString: Untagged
+  m_TagString: TowerFire
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -104,7 +104,7 @@ MonoBehaviour:
   sprites:
   - {fileID: 21300000, guid: 78f73693731774c43be91bb2ad07391a, type: 3}
   - {fileID: 21300000, guid: ae76cc0c59877e34391bf3d9090450a9, type: 3}
-  towerCost: 80
+  towerCost: 120
   towerLevel: 1
 --- !u!1 &2780428865582051774
 GameObject:
@@ -132,9 +132,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2780428865582051774}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.07, y: 1.07, z: 0}
-  m_LocalScale: {x: 0.67912936, y: 0.67912936, z: 0.67912936}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.049, y: 1.353, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2780428864421338709}
   m_RootOrder: 1

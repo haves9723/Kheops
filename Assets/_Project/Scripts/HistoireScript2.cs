@@ -7,6 +7,6 @@ public class HistoireScript2 : MonoBehaviour
 {
     public void Suivant()
     {
-        SceneManager.LoadScene("FilipeScene");
+        SceneManager.LoadScene("MainScene");
     }
 }

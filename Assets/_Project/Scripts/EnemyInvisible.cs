@@ -9,6 +9,8 @@ public class EnemyInvisible : MonoBehaviour
 
     private void OnMouseDown()
     {
+        Enemy.enemies.Remove(gameObject.GetComponent<Enemy>());
+        
         Destroy(gameObject);
     }
 

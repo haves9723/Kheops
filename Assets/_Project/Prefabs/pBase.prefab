@@ -413,8 +413,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 650099b1b922c734492116060735a2ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initHealth: 5
-  currentHealth: 0
+  initHealth: 50
+  currentHealth: 50
   healthBar: {fileID: 5976394996329210236}
   GameOverScreen: {fileID: 0}
 --- !u!114 &4072702250168472832
@@ -429,7 +429,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51368b482cc44c644b0dd75e07d3eae4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initHealth: 5
+  initHealth: 100
   currentHealth: 0
   healthBar: {fileID: 5976394996329210236}
 --- !u!1 &8504705753036229707

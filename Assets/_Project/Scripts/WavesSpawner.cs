@@ -7,7 +7,7 @@ public class WavesSpawner : MonoBehaviour
 {
     //UI text for round
     public TextMeshProUGUI waveCountText;
-    int roundCount = 0;
+    int roundCount;
 
     public float spawnRate = 1f;
     public float timeBetweenWaves = 10f;
@@ -37,6 +37,25 @@ public class WavesSpawner : MonoBehaviour
         if (waveIsDone == true && enemiesLeft == 0)
         {
             roundCount += 1;
+            /*Debug.Log(GameObject.FindWithTag("TowerStone").GetComponent<Tower>());
+            Tower towerStone = GameObject.FindWithTag("TowerStone").GetComponent<Tower>();
+            Tower towerFire = GameObject.FindWithTag("TowerFire").GetComponent<Tower>();*/
+
+            /*if (roundCount == 1)
+            {
+                towerStone.setTowerCost(towerStone.getTowerCost() * 2);
+                towerFire.setTowerCost(towerFire.getTowerCost() * 2);
+            }*/
+
+            /*foreach (var prefabsEnemy in gameObject.GetComponent<EnemySpawner>().prefabsEnemies)
+            {
+                Enemy enemy = prefabsEnemy.GetComponent<Enemy>();
+                if (enemy.getEnemyValue() > 10)
+                {
+                    enemy.setEnemyValue(enemy.getEnemyValue() - 5);
+                }
+            }*/
+
             StartCoroutine(waveSpawner());
         }
     }
@@ -44,7 +63,7 @@ public class WavesSpawner : MonoBehaviour
     IEnumerator waveSpawner()
     {
         waveIsDone = false;
-        //yield return new WaitForSeconds(30);
+        yield return new WaitForSeconds(15);
 
         for (int i = 0; i < enemyCount; i++)
         {
@@ -54,7 +73,6 @@ public class WavesSpawner : MonoBehaviour
 
         if (spawnRate > .5f)
         {
-            
             spawnRate -= .5f;
         }
 

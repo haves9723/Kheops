@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -20,7 +21,13 @@ public class Spawner : MonoBehaviour
 
     //SpawnPoints Tilemap
     public Tilemap spawnTilemap;
+    private Tilemap _spawnPointTowersTilemap;
 
+
+    private void Start()
+    {
+        _spawnPointTowersTilemap = GameObject.FindWithTag("SpawnPointTowers").GetComponent<Tilemap>();
+    }
 
     void Update()
     {
@@ -94,6 +101,7 @@ public class Spawner : MonoBehaviour
             spawnID = id;
             //Highlight the tower
             towersUI[spawnID].color = Color.white;
+            _spawnPointTowersTilemap.color = new Color(0f, 0f, 0f, .3f);
         }
     }
 
@@ -103,6 +111,7 @@ public class Spawner : MonoBehaviour
         foreach (var t in towersUI)
         {
             t.color = new Color(0.5f, 0.5f, 0.5f);
+            _spawnPointTowersTilemap.color = new Color(0f, 0f, 0f, 0f);
         }
 
         {
